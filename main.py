@@ -40,8 +40,9 @@ try:
             raise FileNotFoundError("OpenAI APIキーが secrets.toml に設定されていません。")
         
         if "firebase" in st.secrets:
-            cred = credentials.Certificate(st.secrets["firebase"])
-            initialize_app(cred)
+            firebase_secrets = dict(st.secrets["firebase"])
+            cred = credentials.Certificate(firebase_secrets)
+            
         else:
             raise FileNotFoundError("Firebase 設定が secrets.toml に設定されていません。")
 
