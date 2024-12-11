@@ -35,7 +35,7 @@ try:
         # デプロイ環境の設定
         st.write("Running in Production Environment")
         if "openai" in st.secrets:
-            openai.api_key = st.secrets["openai"]["api_key"]
+            openai.api_key = st.secrets["openai"]["OPENAI_API_KEY"]
         else:
             raise FileNotFoundError("OpenAI APIキーが secrets.toml に設定されていません。")
         
